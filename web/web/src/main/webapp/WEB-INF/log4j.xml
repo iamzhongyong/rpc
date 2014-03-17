@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <!-- ===================================================================== -->
+    <!--  以下是appender的定义                                                 -->
+    <!-- ===================================================================== -->
+    <appender name="PROJECT" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="${wms.log.root}/wms.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="GB2312"/>
+        <param name="threshold" value="info"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%X{requestURIWithQueryString}] %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="localcache" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="${wms.log.root}/localcache.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="GB2312"/>
+        <param name="threshold" value="info"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%X{requestURIWithQueryString}] %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+    	
+    <!-- ===================================================================== -->
+    <!--  以下是logger的定义   additivity表明是否是要在root里面也出现                   -->
+    <!-- ===================================================================== -->
+	<logger name="localcache" additivity="false">
+        <level value="${logisticsmap.log.level}"/>
+        <appender-ref ref="localcache"/>
+    </logger>
+       
+    <!-- ===================================================================== -->
+    <!--  Root logger的定义                                                    -->
+    <!-- ===================================================================== -->
+    <root>
+        <level value="${wms.log.level}"/>
+        <appender-ref ref="PROJECT"/>
+    </root>
+</log4j:configuration>

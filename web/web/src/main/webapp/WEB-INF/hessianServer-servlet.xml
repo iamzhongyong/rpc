@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+
+	<bean id="demoService" class="hessian.spring.demo.DemoSpringHessianSerivceImpl" init-method="init"/>  
+	<bean name="/demoService"  class="org.springframework.remoting.caucho.HessianServiceExporter">  
+       <property name="service" ref="demoService" />  
+       <property name="serviceInterface" value="hessian.spring.demo.DemoSpringHessianService" />  
+	</bean> 
+	
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>  
+	
+</beans>
