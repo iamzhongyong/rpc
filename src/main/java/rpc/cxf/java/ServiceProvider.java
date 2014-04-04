@@ -12,7 +12,7 @@ public class ServiceProvider {
            HelloWorldService implementor= new HelloWorldServiceImpl();
            Endpoint.publish(SERVICE_ADDRESS, implementor);
            System.out.println("web service started");
-           Thread.sleep(50000);
+           Thread.sleep(500000);
            
 	}
 }

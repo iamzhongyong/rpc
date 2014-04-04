@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.jws.WebService;
 
+import user.UserDO;
+
 
 @WebService(endpointInterface="rpc.cxf.java.HelloWorldService",serviceName="helloWorldService")
 public class HelloWorldServiceImpl implements HelloWorldService {
@@ -21,6 +23,18 @@ public class HelloWorldServiceImpl implements HelloWorldService {
 		names.add("bixiao.zy");
 		return names;
 	}
+
+	@Override
+	public List<UserDO> getAllUserInfo() {
+		List<UserDO> rs = new ArrayList<UserDO>();
+		for(int i=0 ; i<30 ; i++){
+			UserDO user = new UserDO();
+			user.name("iamzhongyong").sex(i).email("iamzhongyong@126.com").password("iafsdf");
+			rs.add(user);
+		}
+		return rs;
+	}
+	
 	
 	
 
